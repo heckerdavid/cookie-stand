@@ -137,6 +137,7 @@ const DubaiStore = {
   },
   // Store the results for each location in a separate array… perhaps as a property of the object representing that location
   salesByHour: [],
+  saleHoursListed: ['0600', '0700', '0800', '0900', '1000', '1100', '1200', '1300', '1400', '1500', '1600', '1700', '1800', '1900'],
   updateSalesByHour: function() {
     for (let i = 0; i < 14; i++) {
       this.salesByHour.push(this.cookiesSold());
@@ -282,27 +283,15 @@ const LimaStore = {
   },
 }
 
-SeattleStore.updateSalesByHour()
-console.log("sales by hour is: " + SeattleStore.salesByHour)
-console.log("daily sales: " + SeattleStore.dailySales())
-SeattleStore.renderSales()
+// locations array
+const storeLocations = [SeattleStore, TokyoStore, DubaiStore, ParisStore, LimaStore]
+// loop thru locations araay and render
+function renderStores(array) {
+  for (let i = 0; i < array.length; i++) {
+    array[i].updateSalesByHour();
+    array[i].renderSales();
+  }
+}
 
-TokyoStore.updateSalesByHour()
-console.log("sales by hour is: " + TokyoStore.salesByHour)
-console.log("daily sales: " + TokyoStore.dailySales())
-TokyoStore.renderSales()
+renderStores(storeLocations)
 
-DubaiStore.updateSalesByHour()
-console.log("sales by hour is: " + DubaiStore.salesByHour)
-console.log("daily sales: " + DubaiStore.dailySales())
-DubaiStore.renderSales()
-
-ParisStore.updateSalesByHour()
-console.log("sales by hour is: " + ParisStore.salesByHour)
-console.log("daily sales: " + ParisStore.dailySales())
-ParisStore.renderSales()
-
-LimaStore.updateSalesByHour()
-console.log("sales by hour is: " + LimaStore.salesByHour)
-console.log("daily sales: " + LimaStore.dailySales())
-LimaStore.renderSales()
