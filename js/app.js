@@ -32,9 +32,16 @@ const storeFront = {
     }
   },
   // Display the values of each array as unordered lists in the browser
-  displaySales: function() {
+  renderSales: function(salesArray) {
+    const articleElem = document.createElement('article');
+    const ulElem = document.createElement('ul');
+    salesDiv.appendChild(articleElem)
+    articleElem.appendChild(ulElem)
+
     for (let i = 0; i < storeFront.salesByHour.length; i++) {
-      WHATEVERTHEPRINTFUNCTIONIS.append(storeFront.salesByHour[i])
+      const liElem = document.createElement('li')
+      liElem.textContent = storeFront.salesByHour[i]
+      ulElem.appendChild(liElem)
     }
   },
   // Calculating the sum of these hourly totals
@@ -47,8 +54,11 @@ const storeFront = {
   },
 }
 
+const salesDiv = document.getElementById("salesData")
+
 console.log(storeFront)
 console.log(storeFront.cookiesSold())
 storeFront.updateSalesByHour()
 console.log(storeFront.salesByHour)
 console.log(storeFront.dailySales())
+storeFront.renderSales()
