@@ -178,15 +178,17 @@ cookieStore.prototype.renderTableData = function() {
     const th1Elem = document.createElement('th')
     th1Elem.textContent = cookieStore.storeLocations[i].location
     row.appendChild(th1Elem)
+    for (let j = 0; j < cookieStore.storeLocations[i].salesByHour.length; j++) {
+      const th2Elem = document.createElement('th')
+      th2Elem.textContent = cookieStore.storeLocations[i].salesByHour[j]
+      row.appendChild(th2Elem)
+    }
 
   }
   
   // // add 16 cells to table header
   // for (let i = 0; i < 14; i++)
 
-  // const th2Elem = document.createElement('th')
-  // th2Elem.textContent = '0600'
-  // row1.appendChild(th2Elem)
 
   // const th3Elem = document.createElement('th')
   // th3Elem.textContent = '0700'
