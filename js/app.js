@@ -1,297 +1,96 @@
 'use strict';
 
 const salesDiv = document.getElementById("salesData")
+// locations array
+cookieStore.storeLocations = []
 // Tokyo
 // Dubai
 // Paris
 // Lima
-
 // seattle
-const SeattleStore = {
-  location: 'Seattle',
-  hourOpen: 6,
-  hourClose: 20,
-  // Stores the min/max hourly customers, and the average cookies per customer, in object properties
-  minCustomerHour: 23,
-  maxCustomerHour: 65,
-  aveCookieCustomer: 6.3,
-  // Uses a method of that object to generate a random number of customers per hour. Objects/Math/random
-  randCustomer: function() {
-    let number = Math.floor(Math.random() * (this.maxCustomerHour - this.minCustomerHour)) + this.minCustomerHour;
-    // console.log(number);
-    return number;
-  },
-  // Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
-  cookiesSold: function() {
-    return Math.floor(this.randCustomer() * this.aveCookieCustomer)
-  },
-  // Store the results for each location in a separate array… perhaps as a property of the object representing that location
-  salesByHour: [],
-  updateSalesByHour: function() {
-    for (let i = 0; i < 14; i++) {
-      this.salesByHour.push(this.cookiesSold());
-    }
-  },
-  // Display the values of each array as unordered lists in the browser
-  renderSales: function(salesArray) {
-    const articleElem = document.createElement('article');
-    const h1Elem = document.createElement('h1')
-    salesDiv.appendChild(h1Elem)
-    h1Elem.textContent = this.location
-    const olElem = document.createElement('ol');
-    salesDiv.appendChild(articleElem)
-    articleElem.appendChild(olElem)
-    olElem.setAttribute("start", "6")
 
-    for (let i = 0; i < SeattleStore.salesByHour.length; i++) {
-      const liElem = document.createElement('li')
-      liElem.textContent = SeattleStore.salesByHour[i]
-      olElem.appendChild(liElem)
-    }
-    const h2Elem = document.createElement('h2')
-    salesDiv.appendChild(h2Elem)
-    h2Elem.textContent = `Total sales today: ${this.dailySales()}`
-  },
-  // Calculating the sum of these hourly totals
-  dailySales: function() {
-    let total = 0;
-    for (let i = 0; i < SeattleStore.salesByHour.length; i++) {
-      total += SeattleStore.salesByHour[i]
-    };
-    return total;
-  },
+function cookieStore(location, hourOpen, hourClose, minCustomerHour, maxCustomerHour, aveCookieCustomer, salesByHour=[]) {
+  // input data
+  // Stores the min/max hourly customers, and the average cookies per customer, in object properties
+  this.location = location;
+  this.hourOpen = hourOpen;
+  this.hourClose = hourClose;
+  this.minCustomerHour = minCustomerHour;
+  this.maxCustomerHour = maxCustomerHour;
+  this.aveCookieCustomer = aveCookieCustomer;
+  // Store the results for each location in a separate array… perhaps as a property of the object representing that location
+  this.salesByHour = salesByHour
+  // 
+  cookieStore.storeLocations.push(this);
 }
 
-const TokyoStore = {
-  location: 'Tokyo',
-  hourOpen: 6,
-  hourClose: 20,
-  // Stores the min/max hourly customers, and the average cookies per customer, in object properties
-  minCustomerHour: 3,
-  maxCustomerHour: 24,
-  aveCookieCustomer: 1.2,
-  // Uses a method of that object to generate a random number of customers per hour. Objects/Math/random
-  randCustomer: function() {
-    let number = Math.floor(Math.random() * (this.maxCustomerHour - this.minCustomerHour)) + this.minCustomerHour;
-    // console.log(number);
-    return number;
-  },
-  // Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
-  cookiesSold: function() {
-    return Math.floor(this.randCustomer() * this.aveCookieCustomer)
-  },
-  // Store the results for each location in a separate array… perhaps as a property of the object representing that location
-  salesByHour: [],
-  updateSalesByHour: function() {
-    for (let i = 0; i < 14; i++) {
-      this.salesByHour.push(this.cookiesSold());
-    }
-  },
-  // Display the values of each array as unordered lists in the browser
-  renderSales: function(salesArray) {
-    const articleElem = document.createElement('article');
-    const h1Elem = document.createElement('h1')
-    salesDiv.appendChild(h1Elem)
-    h1Elem.textContent = this.location
-    const olElem = document.createElement('ol');
-    salesDiv.appendChild(articleElem)
-    articleElem.appendChild(olElem)
-    olElem.setAttribute("start", "6")
+new cookieStore("Seattle", '6', '20', 23, 65, 6.3)
+new cookieStore('Tokyo', 6, 20, 3, 24, 1.2)
+new cookieStore('Dubai', 6, 20, 11, 38, 3.7)
+new cookieStore('Paris', 6, 20, 20, 38, 2.3)
+new cookieStore('Lima', 6, 20, 2, 16, 4.6)
 
-    for (let i = 0; i < TokyoStore.salesByHour.length; i++) {
-      const liElem = document.createElement('li')
-      liElem.textContent = TokyoStore.salesByHour[i]
-      olElem.appendChild(liElem)
-    }
-    const h2Elem = document.createElement('h2')
-    salesDiv.appendChild(h2Elem)
-    h2Elem.textContent = `Total sales today: ${this.dailySales()}`
-  },
-  // Calculating the sum of these hourly totals
-  dailySales: function() {
-    let total = 0;
-    for (let i = 0; i < TokyoStore.salesByHour.length; i++) {
-      total += TokyoStore.salesByHour[i]
-    };
-    return total;
-  },
+// Uses a method of that object to generate a random number of customers per hour. Objects/Math/random
+cookieStore.prototype.generateRandCustomer = function() {
+  let number = Math.floor(Math.random() * (this.maxCustomerHour - this.minCustomerHour) + this.minCustomerHour);
+  // console.log(number);
+  return number;
 }
 
-const DubaiStore = {
-  location: 'Dubai',
-  hourOpen: 6,
-  hourClose: 20,
-  // Stores the min/max hourly customers, and the average cookies per customer, in object properties
-  minCustomerHour: 11,
-  maxCustomerHour: 38,
-  aveCookieCustomer: 3.7,
-  // Uses a method of that object to generate a random number of customers per hour. Objects/Math/random
-  randCustomer: function() {
-    let number = Math.floor(Math.random() * (this.maxCustomerHour - this.minCustomerHour)) + this.minCustomerHour;
-    // console.log(number);
-    return number;
-  },
-  // Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
-  cookiesSold: function() {
-    return Math.floor(this.randCustomer() * this.aveCookieCustomer)
-  },
-  // Store the results for each location in a separate array… perhaps as a property of the object representing that location
-  salesByHour: [],
-  saleHoursListed: ['0600', '0700', '0800', '0900', '1000', '1100', '1200', '1300', '1400', '1500', '1600', '1700', '1800', '1900'],
-  updateSalesByHour: function() {
-    for (let i = 0; i < 14; i++) {
-      this.salesByHour.push(this.cookiesSold());
-    }
-  },
-  // Display the values of each array as unordered lists in the browser
-  renderSales: function(salesArray) {
-    const articleElem = document.createElement('article');
-    const h1Elem = document.createElement('h1')
-    salesDiv.appendChild(h1Elem)
-    h1Elem.textContent = this.location
-    const olElem = document.createElement('ol');
-    salesDiv.appendChild(articleElem)
-    articleElem.appendChild(olElem)
-    olElem.setAttribute("start", "6")
 
-    for (let i = 0; i < DubaiStore.salesByHour.length; i++) {
-      const liElem = document.createElement('li')
-      liElem.textContent = DubaiStore.salesByHour[i]
-      olElem.appendChild(liElem)
-    }
-    const h2Elem = document.createElement('h2')
-    salesDiv.appendChild(h2Elem)
-    h2Elem.textContent = `Total sales today: ${this.dailySales()}`
-  },
-  // Calculating the sum of these hourly totals
-  dailySales: function() {
-    let total = 0;
-    for (let i = 0; i < DubaiStore.salesByHour.length; i++) {
-      total += DubaiStore.salesByHour[i]
-    };
-    return total;
-  },
+// Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
+cookieStore.prototype.cookiesSold = function() {
+  return Math.floor(this.generateRandCustomer() * this.aveCookieCustomer);
 }
 
-const ParisStore = {
-  location: 'Paris',
-  hourOpen: 6,
-  hourClose: 20,
-  // Stores the min/max hourly customers, and the average cookies per customer, in object properties
-  minCustomerHour: 20,
-  maxCustomerHour: 38,
-  aveCookieCustomer: 2.3,
-  // Uses a method of that object to generate a random number of customers per hour. Objects/Math/random
-  randCustomer: function() {
-    let number = Math.floor(Math.random() * (this.maxCustomerHour - this.minCustomerHour)) + this.minCustomerHour;
-    // console.log(number);
-    return number;
-  },
-  // Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
-  cookiesSold: function() {
-    return Math.floor(this.randCustomer() * this.aveCookieCustomer)
-  },
-  // Store the results for each location in a separate array… perhaps as a property of the object representing that location
-  salesByHour: [],
-  updateSalesByHour: function() {
-    for (let i = 0; i < 14; i++) {
-      this.salesByHour.push(this.cookiesSold());
-    }
-  },
-  // Display the values of each array as unordered lists in the browser
-  renderSales: function(salesArray) {
-    const articleElem = document.createElement('article');
-    const h1Elem = document.createElement('h1')
-    salesDiv.appendChild(h1Elem)
-    h1Elem.textContent = this.location
-    const olElem = document.createElement('ol');
-    salesDiv.appendChild(articleElem)
-    articleElem.appendChild(olElem)
-    olElem.setAttribute("start", "6")
+//   // Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
+cookieStore.prototype.updateSalesByHour = function() {
+  let timeSpentOpen = (this.hourClose - this.hourOpen)
+  for (let i = 0; i < timeSpentOpen; i++) {
+    this.salesByHour.push(this.cookiesSold());
+  }
+},
 
-    for (let i = 0; i < ParisStore.salesByHour.length; i++) {
-      const liElem = document.createElement('li')
-      liElem.textContent = ParisStore.salesByHour[i]
-      olElem.appendChild(liElem)
-    }
-    const h2Elem = document.createElement('h2')
-    salesDiv.appendChild(h2Elem)
-    h2Elem.textContent = `Total sales today: ${this.dailySales()}`
-  },
-  // Calculating the sum of these hourly totals
-  dailySales: function() {
-    let total = 0;
-    for (let i = 0; i < ParisStore.salesByHour.length; i++) {
-      total += ParisStore.salesByHour[i]
-    };
-    return total;
-  },
+
+// Calculating the sum of these hourly totals
+cookieStore.prototype.dailySales = function() {
+  let total = 0;
+  for (let i = 0; i < this.salesByHour.length; i++) {
+    total += this.salesByHour[i]
+  };
+  return total;
+},
+
+
+// Display the values of each array as unordered lists in the browser
+cookieStore.prototype.renderSales = function(salesArray) {
+  const articleElem = document.createElement('article');
+  const h1Elem = document.createElement('h1')
+  salesDiv.appendChild(h1Elem)
+  h1Elem.textContent = this.location
+  const olElem = document.createElement('ol');
+  salesDiv.appendChild(articleElem)
+  articleElem.appendChild(olElem)
+  olElem.setAttribute("start", "6")
+  
+  for (let i = 0; i < this.salesByHour.length; i++) {
+    const liElem = document.createElement('li')
+    liElem.textContent = this.salesByHour[i]
+    olElem.appendChild(liElem)
+  }
+  const h2Elem = document.createElement('h2')
+  salesDiv.appendChild(h2Elem)
+  h2Elem.textContent = `Total sales today: ${this.dailySales()}`
 }
 
-const LimaStore = {
-  location: 'Lima',
-  hourOpen: 6,
-  hourClose: 20,
-  // Stores the min/max hourly customers, and the average cookies per customer, in object properties
-  minCustomerHour: 2,
-  maxCustomerHour: 16,
-  aveCookieCustomer: 4.6,
-  // Uses a method of that object to generate a random number of customers per hour. Objects/Math/random
-  randCustomer: function() {
-    let number = Math.floor(Math.random() * (this.maxCustomerHour - this.minCustomerHour)) + this.minCustomerHour;
-    // console.log(number);
-    return number;
-  },
-  // Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
-  cookiesSold: function() {
-    return Math.floor(this.randCustomer() * this.aveCookieCustomer)
-  },
-  // Store the results for each location in a separate array… perhaps as a property of the object representing that location
-  salesByHour: [],
-  updateSalesByHour: function() {
-    for (let i = 0; i < 14; i++) {
-      this.salesByHour.push(this.cookiesSold());
-    }
-  },
-  // Display the values of each array as unordered lists in the browser
-  renderSales: function(salesArray) {
-    const articleElem = document.createElement('article');
-    const h1Elem = document.createElement('h1')
-    salesDiv.appendChild(h1Elem)
-    h1Elem.textContent = this.location
-    const olElem = document.createElement('ol');
-    salesDiv.appendChild(articleElem)
-    articleElem.appendChild(olElem)
-    olElem.setAttribute("start", "6")
 
-    for (let i = 0; i < LimaStore.salesByHour.length; i++) {
-      const liElem = document.createElement('li')
-      liElem.textContent = LimaStore.salesByHour[i]
-      olElem.appendChild(liElem)
-    }
-    const h2Elem = document.createElement('h2')
-    salesDiv.appendChild(h2Elem)
-    h2Elem.textContent = `Total sales today: ${this.dailySales()}`
-  },
-  // Calculating the sum of these hourly totals
-  dailySales: function() {
-    let total = 0;
-    for (let i = 0; i < LimaStore.salesByHour.length; i++) {
-      total += LimaStore.salesByHour[i]
-    };
-    return total;
-  },
-}
-
-// locations array
-const storeLocations = [SeattleStore, TokyoStore, DubaiStore, ParisStore, LimaStore]
 // loop thru locations araay and render
-function renderStores(array) {
-  for (let i = 0; i < array.length; i++) {
-    array[i].updateSalesByHour();
-    array[i].renderSales();
+cookieStore.prototype.renderAllStores = function() {
+  for (let i = 0; i < cookieStore.storeLocations.length; i++) {
+    cookieStore.storeLocations[i].updateSalesByHour();
+    cookieStore.storeLocations[i].renderSales();
   }
 }
 
-renderStores(storeLocations)
+cookieStore.prototype.renderAllStores()
 
