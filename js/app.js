@@ -34,15 +34,22 @@ const storeFront = {
   // Display the values of each array as unordered lists in the browser
   renderSales: function(salesArray) {
     const articleElem = document.createElement('article');
-    const ulElem = document.createElement('ul');
+    const h1Elem = document.createElement('h1')
+    salesDiv.appendChild(h1Elem)
+    h1Elem.textContent = this.location
+    const olElem = document.createElement('ol');
     salesDiv.appendChild(articleElem)
-    articleElem.appendChild(ulElem)
+    articleElem.appendChild(olElem)
+    olElem.setAttribute("start", "6")
 
     for (let i = 0; i < storeFront.salesByHour.length; i++) {
       const liElem = document.createElement('li')
       liElem.textContent = storeFront.salesByHour[i]
-      ulElem.appendChild(liElem)
+      olElem.appendChild(liElem)
     }
+    const h2Elem = document.createElement('h2')
+    salesDiv.appendChild(h2Elem)
+    h2Elem.textContent = `Total sales today: ${this.dailySales()}`
   },
   // Calculating the sum of these hourly totals
   dailySales: function() {
@@ -56,9 +63,8 @@ const storeFront = {
 
 const salesDiv = document.getElementById("salesData")
 
-console.log(storeFront)
-console.log(storeFront.cookiesSold())
+
 storeFront.updateSalesByHour()
-console.log(storeFront.salesByHour)
-console.log(storeFront.dailySales())
+console.log("sales by hour is: " + storeFront.salesByHour)
+console.log("daily sales: " + storeFront.dailySales())
 storeFront.renderSales()
