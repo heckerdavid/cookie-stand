@@ -103,69 +103,14 @@ cookieStore.prototype.renderTableHeader = function() {
   const row1 = document.createElement('tr');
   tableElem.appendChild(row1);
   // add 16 cells to table header
-  const th1Elem = document.createElement('th')
-  th1Elem.textContent = 'Store'
-  row1.appendChild(th1Elem)
+  let hoursArray = ['Store', '0600', '0700', '0800', '0900', '1000', '1100', '1200', '1300', '1400', '1500', '1600', '1700', '1800', '1900', 'Daily Total']
+  
+  for(let i = 0; i < hoursArray.length; i++) {
+    const th1Elem = document.createElement('th')
+    th1Elem.textContent = hoursArray[i]
+    row1.appendChild(th1Elem)
+  }
 
-  const th2Elem = document.createElement('th')
-  th2Elem.textContent = '0600'
-  row1.appendChild(th2Elem)
-
-  const th3Elem = document.createElement('th')
-  th3Elem.textContent = '0700'
-  row1.appendChild(th3Elem)
-
-  const th4Elem = document.createElement('th')
-  th4Elem.textContent = '0800'
-  row1.appendChild(th4Elem)
-
-  const th5Elem = document.createElement('th')
-  th5Elem.textContent = '0900'
-  row1.appendChild(th5Elem)
-
-  const th6Elem = document.createElement('th')
-  th6Elem.textContent = '1000'
-  row1.appendChild(th6Elem)
-
-  const th7Elem = document.createElement('th')
-  th7Elem.textContent = '1100'
-  row1.appendChild(th7Elem)
-
-  const th8Elem = document.createElement('th')
-  th8Elem.textContent = '1200'
-  row1.appendChild(th8Elem)
-
-  const th9Elem = document.createElement('th')
-  th9Elem.textContent = '1300'
-  row1.appendChild(th9Elem)
-
-  const th10Elem = document.createElement('th')
-  th10Elem.textContent = '1400'
-  row1.appendChild(th10Elem)
-
-  const th11Elem = document.createElement('th')
-  th11Elem.textContent = '1500'
-  row1.appendChild(th11Elem)
-
-  const th12Elem = document.createElement('th')
-  th12Elem.textContent = '1600'
-  row1.appendChild(th12Elem)
-
-  const th13Elem = document.createElement('th')
-  th13Elem.textContent = '1700'
-  row1.appendChild(th13Elem)
-
-  const th14Elem = document.createElement('th')
-  th14Elem.textContent = '1800'
-  row1.appendChild(th14Elem)
-
-  const th15Elem = document.createElement('th')
-  th15Elem.textContent = '1900'
-  row1.appendChild(th15Elem)
-
-  const th16Elem = document.createElement('th')
-  th16Elem.textContent = 'Total'
-  row1.appendChild(th16Elem)
 }
 // rander data from object to table
 cookieStore.prototype.renderTableData = function() {
@@ -178,73 +123,23 @@ cookieStore.prototype.renderTableData = function() {
     const th1Elem = document.createElement('th')
     th1Elem.textContent = cookieStore.storeLocations[i].location
     row.appendChild(th1Elem)
+
+    let total = 0;
     for (let j = 0; j < cookieStore.storeLocations[i].salesByHour.length; j++) {
+      // add data from salesByHour array
       const th2Elem = document.createElement('th')
       th2Elem.textContent = cookieStore.storeLocations[i].salesByHour[j]
       row.appendChild(th2Elem)
+      // calculate and table add total
+      total += cookieStore.storeLocations[i].salesByHour[j]
+      
     }
+    console.log(total)
+    const totalElem = document.createElement('th')
+    totalElem.textContent = total
+    row.appendChild(totalElem)
 
   }
-  
-  // // add 16 cells to table header
-  // for (let i = 0; i < 14; i++)
-
-
-  // const th3Elem = document.createElement('th')
-  // th3Elem.textContent = '0700'
-  // row1.appendChild(th3Elem)
-
-  // const th4Elem = document.createElement('th')
-  // th4Elem.textContent = '0800'
-  // row1.appendChild(th4Elem)
-
-  // const th5Elem = document.createElement('th')
-  // th5Elem.textContent = '0900'
-  // row1.appendChild(th5Elem)
-
-  // const th6Elem = document.createElement('th')
-  // th6Elem.textContent = '1000'
-  // row1.appendChild(th6Elem)
-
-  // const th7Elem = document.createElement('th')
-  // th7Elem.textContent = '1100'
-  // row1.appendChild(th7Elem)
-
-  // const th8Elem = document.createElement('th')
-  // th8Elem.textContent = '1200'
-  // row1.appendChild(th8Elem)
-
-  // const th9Elem = document.createElement('th')
-  // th9Elem.textContent = '1300'
-  // row1.appendChild(th9Elem)
-
-  // const th10Elem = document.createElement('th')
-  // th10Elem.textContent = '1400'
-  // row1.appendChild(th10Elem)
-
-  // const th11Elem = document.createElement('th')
-  // th11Elem.textContent = '1500'
-  // row1.appendChild(th11Elem)
-
-  // const th12Elem = document.createElement('th')
-  // th12Elem.textContent = '1600'
-  // row1.appendChild(th12Elem)
-
-  // const th13Elem = document.createElement('th')
-  // th13Elem.textContent = '1700'
-  // row1.appendChild(th13Elem)
-
-  // const th14Elem = document.createElement('th')
-  // th14Elem.textContent = '1800'
-  // row1.appendChild(th14Elem)
-
-  // const th15Elem = document.createElement('th')
-  // th15Elem.textContent = '1900'
-  // row1.appendChild(th15Elem)
-
-  // const th16Elem = document.createElement('th')
-  // th16Elem.textContent = '2000'
-  // row1.appendChild(th16Elem)
 
 }
 
