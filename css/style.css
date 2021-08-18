@@ -1,3 +1,62 @@
+/* color palette */
+/* hsl(31, 90%, 69%)
+hsl(23, 90%, 68%)
+hsl(15, 87%, 66%)
+hsl(9, 85%, 65%)
+hsl(3, 86%, 64%)
+hsl(21, 6%, 51%)
+hsl(38, 8%, 72%) */
+
+body {
+  display: flex;
+  background-color:hsl(21, 6%, 51%);
+}
+
+header {
+  display: flex;
+  background-color: hsl(23, 90%, 68%);
+}
+main { 
+  display: flex;
+}
+
+footer {
+  display: flex;
+  background-color: hsl(15, 87%, 66%);
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+  border: solid black;
+  justify-content: space-evenly;
+  width: 100px;
+  align-items: center;
+  background-color: hsl(3, 86%, 64%);
+}
+
+button {
+  background-color: hsl(21, 6%, 51%);
+  border-radius: 20px;
+  border: solid hsl(21, 6%, 51%);
+  padding: 1em;
+  width: 88px;
+  color: hsl(15, 87%, 66%);
+  font-weight: bold;
+}
+
+header div {
+  display: flex;
+  align-items: flex-start;
+}
+
+div img {
+  width: 30%;
+}
+
+
+
 table {
   /* background-color: slategray; */
 }
