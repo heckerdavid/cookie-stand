@@ -24,11 +24,11 @@ function cookieStore(location, hourOpen, hourClose, minCustomerHour, maxCustomer
   cookieStore.storeLocations.push(this);
 }
 
-new cookieStore("Seattle", '6', '20', 23, 65, 6.3);
-new cookieStore('Tokyo', 6, 20, 3, 24, 1.2);
-new cookieStore('Dubai', 6, 20, 11, 38, 3.7);
-new cookieStore('Paris', 6, 20, 20, 38, 2.3);
-new cookieStore('Lima', 6, 20, 2, 16, 4.6);
+let seattleLocation = new cookieStore("Seattle", '6', '20', 23, 65, 6.3);
+let tokyoLocation = new cookieStore('Tokyo', 6, 20, 3, 24, 1.2);
+let dubaiLocation = new cookieStore('Dubai', 6, 20, 11, 38, 3.7);
+let parisLocation = new cookieStore('Paris', 6, 20, 20, 38, 2.3);
+let limaLocation = new cookieStore('Lima', 6, 20, 2, 16, 4.6);
 
 // Uses a method of that object to generate a random number of customers per hour. Objects/Math/random
 cookieStore.prototype.generateRandCustomer = function() {
@@ -152,6 +152,7 @@ cookieStore.prototype.renderTableDataByHourTotal = function() {
   row.appendChild(th1Elem)
 
 
+  let totalValue = 0
   for(let i = 0; i < 14; i++) {
     let total = 0
     for(let j=0; j< cookieStore.storeLocations.length; j++) {
@@ -162,21 +163,20 @@ cookieStore.prototype.renderTableDataByHourTotal = function() {
     row.appendChild(hourElem)
 
   }
-
-}
-
-cookieStore.prototype.calcTotals = function() {
   const value = document.getElementsByClassName('total')
-  let totalValue = 0
   for(let i =0; i < value.length; i++) {
     totalValue += parseInt(value[i].textContent)
   }
-  console.log(totalValue)
+  const totalhourElem = document.createElement('th')
+    totalhourElem.textContent = totalValue
+    row.appendChild(totalhourElem)
+
 }
+
 
 
 cookieStore.prototype.renderAllStores();
 cookieStore.prototype.renderTableHeader();
 cookieStore.prototype.renderTableData();
 cookieStore.prototype.renderTableDataByHourTotal();
-cookieStore.prototype.calcTotals();
+// cookieStore.prototype.calcTotals();
