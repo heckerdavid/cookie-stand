@@ -136,6 +136,7 @@ cookieStore.prototype.renderTableData = function() {
     }
     const totalElem = document.createElement('th')
     totalElem.textContent = total
+    totalElem.setAttribute("class", "total")
     row.appendChild(totalElem)
 
   }
@@ -164,8 +165,18 @@ cookieStore.prototype.renderTableDataByHourTotal = function() {
 
 }
 
+cookieStore.prototype.calcTotals = function() {
+  const value = document.getElementsByClassName('total')
+  let totalValue = 0
+  for(let i =0; i < value.length; i++) {
+    totalValue += parseInt(value[i].textContent)
+  }
+  console.log(totalValue)
+}
+
 
 cookieStore.prototype.renderAllStores();
 cookieStore.prototype.renderTableHeader();
 cookieStore.prototype.renderTableData();
 cookieStore.prototype.renderTableDataByHourTotal();
+cookieStore.prototype.calcTotals();
