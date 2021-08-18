@@ -87,7 +87,7 @@ cookieStore.prototype.renderSales = function() {
 cookieStore.prototype.renderAllStores = function() {
   for (let i = 0; i < cookieStore.storeLocations.length; i++) {
     cookieStore.storeLocations[i].updateSalesByHour();
-    cookieStore.storeLocations[i].renderSales();
+    // cookieStore.storeLocations[i].renderSales();
   }
 }
 
@@ -147,7 +147,7 @@ cookieStore.prototype.renderTableDataByHourTotal = function() {
   tableElem.appendChild(row);
 
   const th1Elem = document.createElement('th')
-  th1Elem.textContent = 'Total'
+  th1Elem.textContent = 'Hourly Total'
   row.appendChild(th1Elem)
 
 
@@ -168,5 +168,4 @@ cookieStore.prototype.renderTableDataByHourTotal = function() {
 cookieStore.prototype.renderAllStores();
 cookieStore.prototype.renderTableHeader();
 cookieStore.prototype.renderTableData();
-
 cookieStore.prototype.renderTableDataByHourTotal();
