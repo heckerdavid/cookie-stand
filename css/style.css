@@ -1,0 +1,14 @@
+table {
+  /* background-color: slategray; */
+}
+
+th {
+  border: solid hsl(300, 50%, 19%);
+  padding: 5px;
+  /* background-color: slategray; */
+  color: salmon;
+}
+
+tr:hover {
+  background-color: rgba(138, 138, 138, 0.486);
+}
