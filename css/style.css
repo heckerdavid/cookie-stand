@@ -1,3 +1,91 @@
+/* color palette */
+/* hsl(31, 90%, 69%)
+hsl(23, 90%, 68%)
+hsl(15, 87%, 66%)
+hsl(9, 85%, 65%)
+hsl(3, 86%, 64%)
+hsl(21, 6%, 51%)
+hsl(38, 8%, 72%) */
+
+nav {
+  display: flex;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  height: 1200px;
+  border: solid black;
+  justify-content: space-evenly;
+  width: 100px;
+  align-items: center;
+  background-color: hsl(3, 86%, 64%);
+}
+body {
+  border: solid black;
+  /* display: flex; */
+  /* justify-content: center; */
+  background-color:hsl(21, 6%, 51%);
+  /* flex-direction: row; */
+}
+
+header {
+  border: solid black;
+  display: flex;
+  background-color: hsl(23, 90%, 68%);
+  /* width: 80%; */
+  justify-content: flex-start;
+}
+main { 
+  display: flex;
+  flex-direction: row;
+}
+
+footer {
+  border: solid black;
+  display: flex;
+  background-color: hsl(15, 87%, 66%);
+  flex-direction: row;
+}
+
+
+a {
+  text-decoration: none;
+  color: hsl(31, 90%, 69%);
+}
+a:hover {
+  color: hsl(3, 86%, 64%);
+
+}
+
+button {
+  background-color: hsl(21, 6%, 51%);
+  border-radius: 20px;
+  border: solid hsl(21, 6%, 51%);
+  padding: 1em;
+  width: 88px;
+  color: hsl(31, 90%, 69%);
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+button:hover {
+  background-color: hsl(38, 8%, 72%);
+  border: dotted hsl(21, 6%, 51%);
+  color: hsl(3, 86%, 64%);
+}
+
+header div {
+  display: flex;
+  align-items: flex-start;
+}
+
+div img {
+  width: 30%;
+}
+
+
+
 table {
   /* background-color: slategray; */
 }
