@@ -24,17 +24,24 @@ function cookieStore(location, hourOpen, hourClose, minCustomerHour, maxCustomer
   cookieStore.storeLocations.push(this);
 }
 
-let seattleLocation = new cookieStore("Seattle", '6', '20', 23, 65, 6.3);
+let seattleLocation = new cookieStore("Seattle", 6, 20, 23, 65, 6.3);
 let tokyoLocation = new cookieStore('Tokyo', 6, 20, 3, 24, 1.2);
 let dubaiLocation = new cookieStore('Dubai', 6, 20, 11, 38, 3.7);
 let parisLocation = new cookieStore('Paris', 6, 20, 20, 38, 2.3);
 let limaLocation = new cookieStore('Lima', 6, 20, 2, 16, 4.6);
 
+function _makeElem(tag, parent, text=null){
+  let Elem = document.createElement(tag);
+  let newElem = parent.appendChild(Elem);
+  if (text) {
+    newElem.textContent = text;
+  }  
+  return Elem;
+}
+
 // Uses a method of that object to generate a random number of customers per hour. Objects/Math/random
 cookieStore.prototype.generateRandCustomer = function() {
-  let number = Math.floor(Math.random() * (this.maxCustomerHour - this.minCustomerHour) + this.minCustomerHour);
-  // console.log(number);
-  return number;
+  return ( Math.floor(Math.random() * (this.maxCustomerHour - this.minCustomerHour) + this.minCustomerHour));
 }
 
 // Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
@@ -60,7 +67,7 @@ cookieStore.prototype.dailySales = function() {
   return total;
 },
 
-
+//TODO 
 // Display the values of each array as unordered lists in the browser
 cookieStore.prototype.renderSales = function() {
   const articleElem = document.createElement('article');
@@ -130,10 +137,10 @@ cookieStore.prototype.renderTableData = function() {
       const th2Elem = document.createElement('th')
       th2Elem.textContent = cookieStore.storeLocations[i].salesByHour[j]
       row.appendChild(th2Elem)
-      // calculate and table add total
+      // calculate  total
       total += cookieStore.storeLocations[i].salesByHour[j]
-      
     }
+    //  append total to table
     const totalElem = document.createElement('th')
     totalElem.textContent = total
     totalElem.setAttribute("class", "total")
@@ -142,6 +149,7 @@ cookieStore.prototype.renderTableData = function() {
   }
 
 }
+
 cookieStore.prototype.renderTableDataByHourTotal = function() {
   const tableElem = document.getElementById('dataTable')
   const row = document.createElement('tr');
@@ -163,10 +171,12 @@ cookieStore.prototype.renderTableDataByHourTotal = function() {
     row.appendChild(hourElem)
 
   }
+  // calc grand total
   const value = document.getElementsByClassName('total')
   for(let i =0; i < value.length; i++) {
     totalValue += parseInt(value[i].textContent)
   }
+  // append grand total to table
   const totalhourElem = document.createElement('th')
     totalhourElem.textContent = totalValue
     row.appendChild(totalhourElem)
