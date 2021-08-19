@@ -42,7 +42,7 @@ cookieStore.prototype.cookiesSold = function() {
   return Math.floor(this.generateRandCustomer() * this.aveCookieCustomer);
 }
 
-//   // Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
+// Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
 cookieStore.prototype.updateSalesByHour = function() {
   let timeSpentOpen = (this.hourClose - this.hourOpen);
   for (let i = 0; i < timeSpentOpen; i++) {
@@ -83,7 +83,7 @@ cookieStore.prototype.renderSales = function() {
 }
 
 
-// loop thru locations araay and render
+// loop thru locations array and render
 cookieStore.prototype.renderAllStores = function() {
   for (let i = 0; i < cookieStore.storeLocations.length; i++) {
     cookieStore.storeLocations[i].updateSalesByHour();
@@ -112,7 +112,7 @@ cookieStore.prototype.renderTableHeader = function() {
   }
 
 }
-// rander data from object to table
+// render data from object to table
 cookieStore.prototype.renderTableData = function() {
   // add store location
   for(let i = 0; i < cookieStore.storeLocations.length; i++) {
