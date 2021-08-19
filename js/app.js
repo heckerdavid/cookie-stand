@@ -185,9 +185,21 @@ cookieStore.prototype.renderTableDataByHourTotal = function() {
   // const totalhourElem = document.createElement('th')
   //   totalhourElem.textContent = totalValue
   //   row.appendChild(totalhourElem)
-
 }
 
+function handleSubmitNewLocation(event) {
+  event.preventDefault();
+  const location = event.target.location.value;
+  const minCustomerHour = event.target.minCustomerHour.value;
+  const maxCustomerHour = event.target.minCustomerHour.value;
+  const aveCookieCustomer = event.target.aveCookieCustomer.value;
+
+  let newStore = new cookieStore(location, 6, 20, minCustomerHour, maxCustomerHour, aveCookieCustomer)
+  console.log(newStore)
+ }
+
+ const formElem = document.getElementById('newLocation')
+ formElem.addEventListener('submit', handleSubmitNewLocation)
 
 
 cookieStore.prototype.renderAllStores();

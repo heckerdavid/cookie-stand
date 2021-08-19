@@ -22,21 +22,22 @@
 <body>
   <div id="salesData"></div>
   
-  <form>
+  <form id="newLocation">
     <fieldset>
-      <legend>Generate a new location</legend>
+      <legend>Generate New Location</legend>
       <label>
-        <input type="text" name="location">
+        Location:<input type="text" name="location">
       </label>
       <label>
-        <input type="number" name="minCustomerHour">
+        Minimum Customers Per Hour:<input type="number" name="minCustomerHour">
       </label>
       <label>
-        <input type="number" name="maxCustomerHour">
+        Maximum Customers Per Hour:<input type="number" name="maxCustomerHour">
       </label>
       <label>
-        <input type="number" name="aveCookieCustomer">
+        Average Cookies Purchased Per Customer:<input type="number" name="aveCookieCustomer">
       </label>
+      <button>Submit</button>
     </fieldset>
   </form>
 </body>
