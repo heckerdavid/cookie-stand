@@ -7,16 +7,34 @@ hsl(3, 86%, 64%)
 hsl(21, 6%, 51%)
 hsl(38, 8%, 72%) */
 
+nav {
+  display: flex;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  height: 1200px;
+  border: solid black;
+  justify-content: space-evenly;
+  width: 100px;
+  align-items: center;
+  background-color: hsl(3, 86%, 64%);
+}
 body {
   border: solid black;
-  display: flex;
+  /* display: flex; */
+  /* justify-content: center; */
   background-color:hsl(21, 6%, 51%);
+  /* flex-direction: row; */
 }
 
 header {
   border: solid black;
   display: flex;
   background-color: hsl(23, 90%, 68%);
+  /* width: 80%; */
+  justify-content: flex-start;
 }
 main { 
   display: flex;
@@ -27,18 +45,9 @@ footer {
   border: solid black;
   display: flex;
   background-color: hsl(15, 87%, 66%);
+  flex-direction: row;
 }
 
-nav ul {
-  display: flex;
-  flex-direction: column;
-  height: 800px;
-  border: solid black;
-  justify-content: space-evenly;
-  width: 100px;
-  align-items: center;
-  background-color: hsl(3, 86%, 64%);
-}
 
 a {
   text-decoration: none;
