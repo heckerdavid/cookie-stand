@@ -3,11 +3,8 @@
 const salesDiv = document.getElementById("salesData");
 // locations array
 cookieStore.storeLocations = [];
-// Tokyo
-// Dubai
-// Paris
-// Lima
-// seattle
+// form element
+const formElem = document.getElementById('newLocation')
 
 function cookieStore(location, hourOpen, hourClose, minCustomerHour, maxCustomerHour, aveCookieCustomer, salesByHour=[]) {
   // input data
@@ -20,7 +17,7 @@ function cookieStore(location, hourOpen, hourClose, minCustomerHour, maxCustomer
   this.aveCookieCustomer = aveCookieCustomer;
   // Store the results for each location in a separate array… perhaps as a property of the object representing that location
   this.salesByHour = salesByHour
-  // 
+  //append store locations array
   cookieStore.storeLocations.push(this);
 }
 
@@ -43,7 +40,7 @@ function _makeElem(tag, parent, text=null, attribute, attributeValue) {
   return Elem;
 }
 
-// Uses a method of that object to generate a random number of customers per hour. Objects/Math/random
+// generate a random number of customers per hour
 cookieStore.prototype.generateRandCustomer = function() {
   return ( Math.floor(Math.random() * (this.maxCustomerHour - this.minCustomerHour) + this.minCustomerHour));
 }
@@ -53,7 +50,7 @@ cookieStore.prototype.cookiesSold = function() {
   return Math.floor(this.generateRandCustomer() * this.aveCookieCustomer);
 }
 
-// Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
+// Calculate and store the simulated amounts of cookies purchased for each hour, at each location, using average cookies purchased and the random number of customers generated
 cookieStore.prototype.updateSalesByHour = function() {
   let timeSpentOpen = (this.hourClose - this.hourOpen);
   for (let i = 0; i < timeSpentOpen; i++) {
@@ -63,32 +60,36 @@ cookieStore.prototype.updateSalesByHour = function() {
 
 
 // Calculating the sum of these hourly totals
-cookieStore.prototype.dailySales = function() {
-  let total = 0;
-  for (let i = 0; i < this.salesByHour.length; i++) {
-    total += this.salesByHour[i];
-  };
-  return total;
-},
+// cookieStore.prototype.dailySales = function() {
+//   let total = 0;
+//   for (let i = 0; i < this.salesByHour.length; i++) {
+//     total += this.salesByHour[i];
+//   };
+//   return total;
+// },
 
-//TODO 
 // Display the values of each array as unordered lists in the browser
-cookieStore.prototype.renderSales = function() {
+// cookieStore.prototype.renderSales = function() {
 
-  _makeElem('h1', salesDiv, this.location)
-  _makeElem('article', salesDiv)
-  _makeElem('ol', 'article', null, 'start', '6')
+//   _makeElem('h1', salesDiv, this.location)
+//   _makeElem('article', salesDiv)
+//   _makeElem('ol', 'article', null, 'start', '6')
 
-  for (let i = 0; i < this.salesByHour.length; i++) {
-    // append data from salesByHour array to data table
-    _makeElem('li', 'ol', this.salesByHour[i])
-  }
-  _makeElem('h2', salesDiv, `Total sales today: ${this.dailySales()}`)
-}
+//   for (let i = 0; i < this.salesByHour.length; i++) {
+//     // append data from salesByHour array to data table
+//     _makeElem('li', 'ol', this.salesByHour[i])
+//   }
+//   // _makeElem('h2', salesDiv, `Total sales today: ${this.dailySales()}`)
+// }
 
 
 // loop thru locations array and render
 cookieStore.prototype.renderAllStores = function() {
+// clear cookies sold array
+  for (let i = 0; i <cookieStore.storeLocations.length; i++) {
+    cookieStore.storeLocations[i].salesByHour = []
+  }
+
   for (let i = 0; i < cookieStore.storeLocations.length; i++) {
     cookieStore.storeLocations[i].updateSalesByHour();
     }
@@ -191,17 +192,20 @@ function handleSubmitNewLocation(event) {
   event.preventDefault();
   const location = event.target.location.value;
   const minCustomerHour = event.target.minCustomerHour.value;
-  const maxCustomerHour = event.target.minCustomerHour.value;
+  const maxCustomerHour = event.target.maxCustomerHour.value;
   const aveCookieCustomer = event.target.aveCookieCustomer.value;
 
   let newStore = new cookieStore(location, 6, 20, minCustomerHour, maxCustomerHour, aveCookieCustomer)
   console.log(newStore)
- }
+  cookieStore.prototype.renderAllStores();
+  cookieStore.prototype.renderTableHeader();
+  cookieStore.prototype.renderTableData();
+  cookieStore.prototype.renderTableDataByHourTotal();
+}
 
- const formElem = document.getElementById('newLocation')
- formElem.addEventListener('submit', handleSubmitNewLocation)
+formElem.addEventListener('submit', handleSubmitNewLocation)
 
-
+// TODO - wrap all the generate & populate functions in one and button tie it
 cookieStore.prototype.renderAllStores();
 cookieStore.prototype.renderTableHeader();
 cookieStore.prototype.renderTableData();
