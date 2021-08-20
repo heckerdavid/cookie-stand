@@ -100,3 +100,26 @@ th {
 tr:hover {
   background-color: rgba(138, 138, 138, 0.486);
 }
+
+form {
+  border: 1px solid black;
+  padding: 5px;
+  display: flex;
+  height: 200px;
+  width: 50%;
+  /* flex-direction: column; */
+  /* align-items: flex-start; */
+  justify-content: center;
+}
+
+fieldset {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 15px;
+}
+
+label {
+  padding: 4px;
+}
