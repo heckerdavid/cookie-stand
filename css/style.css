@@ -7,6 +7,11 @@ hsl(3, 86%, 64%)
 hsl(21, 6%, 51%)
 hsl(38, 8%, 72%) */
 
+p {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: hsl(15, 87%, 66%);
+}
+
 nav {
   display: flex;
   width: 180px;
@@ -66,14 +71,29 @@ main section {
   padding: 20px;
   margin: 20px;
 }
+main section:nth-child(1) {
+  width: 60%;
+}
 
 h3 {
   font: 1em sans-serif;
   color: hsl(31, 90%, 69%);
-
+  font-size: large;
 }
 section div {
   margin: 40px;
+}
+
+#ankle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+hr {
+  height: 0px;
+  border: 2px dotted hsl(3, 86%, 64%);
+  width: 98%;
 }
 
 footer {
