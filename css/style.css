@@ -23,7 +23,7 @@ nav ul {
 }
 body {
   border: solid black;
-  /* display: flex; */
+  display: flex;
   /* justify-content: center; */
   background-color:hsl(21, 6%, 51%);
   /* flex-direction: row; */
