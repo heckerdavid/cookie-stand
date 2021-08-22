@@ -9,6 +9,7 @@ hsl(38, 8%, 72%) */
 
 nav {
   display: flex;
+  width: 180px;
 }
 
 nav ul {
@@ -17,7 +18,7 @@ nav ul {
   height: 1200px;
   border: solid black;
   justify-content: space-evenly;
-  width: 100px;
+  width: 100%;
   align-items: center;
   background-color: hsl(3, 86%, 64%);
 }
@@ -63,7 +64,7 @@ button {
   border-radius: 20px;
   border: solid hsl(21, 6%, 51%);
   padding: 1em;
-  width: 88px;
+  width: 128px;
   color: hsl(31, 90%, 69%);
   font-weight: bold;
   font-size: 0.8em;
