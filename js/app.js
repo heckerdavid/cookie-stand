@@ -194,6 +194,7 @@ function handleSubmitNewLocation(event) {
   const minCustomerHour = event.target.minCustomerHour.value;
   const maxCustomerHour = event.target.maxCustomerHour.value;
   const aveCookieCustomer = event.target.aveCookieCustomer.value;
+  salesDiv.innerHTML = ''
 
   let newStore = new cookieStore(location, 6, 20, minCustomerHour, maxCustomerHour, aveCookieCustomer)
   console.log(newStore)

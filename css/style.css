@@ -7,45 +7,126 @@ hsl(3, 86%, 64%)
 hsl(21, 6%, 51%)
 hsl(38, 8%, 72%) */
 
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: hsl(15, 87%, 66%);
+}
+
 nav {
   display: flex;
+  width: 180px;
 }
 
 nav ul {
   display: flex;
   flex-direction: column;
   height: 1200px;
-  border: solid black;
   justify-content: space-evenly;
-  width: 100px;
+  width: 100%;
   align-items: center;
   background-color: hsl(3, 86%, 64%);
+  border-radius: 20px;
+  margin: 5px;
 }
 body {
   border: solid black;
-  /* display: flex; */
+  display: flex;
   /* justify-content: center; */
   background-color:hsl(21, 6%, 51%);
   /* flex-direction: row; */
 }
 
 header {
-  border: solid black;
+  margin: 5px;
   display: flex;
   background-color: hsl(23, 90%, 68%);
-  /* width: 80%; */
-  justify-content: flex-start;
+  justify-content: space-between;
+  border-radius: 20px;
 }
+
+header img {
+  padding: 10px;
+  margin-right: 100px;
+}
+
+header h1 {
+  font-weight: 600;
+  color: hsl(21, 6%, 51%);
+  padding: 20px;
+  margin-top: 30px;
+  margin-left: 280px;
+  font-family: 'Rock Salt', cursive;
+  font-size: 50px;
+}
+
 main { 
   display: flex;
+  flex-direction: column;
+}
+
+main section {
+  display: flex;
   flex-direction: row;
+  height: 300px;
+  justify-content: space-around;
+  width: 90%;
+  padding: 20px;
+  margin: 20px;
+}
+
+main section:hover {
+  border-radius: 30px;
+  background-color: black;
+}
+
+main section:nth-child(1) {
+  width: 60%;
+}
+
+h3 {
+  font: 1em sans-serif;
+  color: hsl(31, 90%, 69%);
+  font-size: large;
+}
+section div {
+  margin: 40px;
+}
+
+#ankle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+hr {
+  height: 0px;
+  border: 2px dotted hsl(3, 86%, 64%);
+  width: 98%;
 }
 
 footer {
-  border: solid black;
+  border-radius: 20px;
   display: flex;
   background-color: hsl(15, 87%, 66%);
+  justify-content: center;
+  margin: 5px;
+  position: sticky;
+  bottom: 20px;
+}
+
+footer ul {
+  display: flex;
   flex-direction: row;
+  justify-content: space-around
+}
+footer ul li {
+  margin: 80px;
+  font-family: 'Rock Salt', cursive;
+  color: hsl(23, 90%, 68%);
 }
 
 
@@ -63,10 +144,11 @@ button {
   border-radius: 20px;
   border: solid hsl(21, 6%, 51%);
   padding: 1em;
-  width: 88px;
+  width: 128px;
   color: hsl(31, 90%, 69%);
   font-weight: bold;
   font-size: 0.8em;
+  font-family: 'Rock Salt', cursive;
 }
 
 button:hover {
@@ -84,40 +166,38 @@ div img {
   width: 30%;
 }
 
-
-
 table {
-  /* background-color: slategray; */
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 th {
   border: solid hsl(300, 50%, 19%);
   padding: 5px;
-  /* background-color: slategray; */
   color: salmon;
 }
 
 tr:hover {
-  background-color: rgba(138, 138, 138, 0.486);
+  background-color: black;
 }
 
 form {
-  border: 1px solid black;
-  padding: 5px;
+  padding: 15px;
+  margin: 25px;
   display: flex;
-  height: 200px;
-  width: 50%;
-  /* flex-direction: column; */
-  /* align-items: flex-start; */
+  height: 400px;
   justify-content: center;
+  font-size: small;
 }
 
 fieldset {
-  border: 1px solid black;
+  border-radius: 20px;
+  background-color: hsl(31, 90%, 69%);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 15px;
+  padding: 25px;
+  margin: 5px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 label {

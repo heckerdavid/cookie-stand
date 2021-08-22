@@ -5,41 +5,63 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Salmon Cookie Sales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<header>
-  <nav>
-    <ul>
-      <li><button><a href="/html/index.html">Home</a></button></li>
-      <li><button>link 2</button></li>
-      <li><button>link 3</button></li>
-      <li><button>link 4</button></li>
-      <li><button>link 5</button></li>
-    </ul>
-  </nav>
-</header>
 <body>
-  <div id="salesData"></div>
-  
-  <form id="newLocation">
-    <fieldset>
-      <legend>Generate New Location</legend>
-      <label>
-        Location:<input type="text" name="location">
-      </label>
-      <label>
-        Minimum Customers Per Hour:<input type="number" name="minCustomerHour">
-      </label>
-      <label>
-        Maximum Customers Per Hour:<input type="number" name="maxCustomerHour">
-      </label>
-      <label>
-        Average Cookies Purchased Per Customer:<input type="number" name="aveCookieCustomer">
-      </label>
-      <button>Submit</button>
-    </fieldset>
-  </form>
+  <div id="nav">
+    <nav>
+      <ul>
+        <li><a href="index.html"><button>Home</button></a></li>
+        <li><a href="sales.html"><button>Sales</button></a></li>
+        <li><button>Anchovy Brownies</button></li>
+        <li><button>Fish Egg Bubble Tea</button></li>
+        <li><button>Ocean Fog Latte</button></li>
+      </ul>
+    </nav>
+    
+  </div>
+  <div id="not_nav">
+    <header>
+      <div>
+        <img src="/img/salmon.png" alt="Salmon Logo">
+        <h1>
+          Salmon Sales!
+        </h1>
+      </div>
+    </header>
+
+    <div id="salesData"></div>
+    
+    <form id="newLocation">
+      <fieldset>
+        <legend>Generate New Location</legend>
+        <label>
+          Location:<input type="text" name="location">
+        </label>
+        <label>
+          Minimum Customers Per Hour:<input type="number" name="minCustomerHour">
+        </label>
+        <label>
+          Maximum Customers Per Hour:<input type="number" name="maxCustomerHour">
+        </label>
+        <label>
+          Average Cookies Purchased Per Customer:<input type="number" name="aveCookieCustomer">
+        </label>
+        <button>Submit</button>
+      </fieldset>
+    </form>
+    <footer>
+      <ul>
+        <li>About Us</li>
+        <li>Coming Soon</li>
+        <li>Contact Us</li>
+      </ul>
+    </footer>
+  </div>
 </body>
 <script src="/js/app.js"></script>
 </html>
