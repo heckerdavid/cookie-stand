@@ -77,6 +77,12 @@ main section {
   padding: 20px;
   margin: 20px;
 }
+
+main section:hover {
+  border-radius: 30px;
+  background-color: black;
+}
+
 main section:nth-child(1) {
   width: 60%;
 }
