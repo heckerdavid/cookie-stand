@@ -34,9 +34,23 @@ header {
   border: solid black;
   display: flex;
   background-color: hsl(23, 90%, 68%);
-  /* width: 80%; */
-  justify-content: flex-start;
+  justify-content: space-between;
 }
+
+header img {
+  padding: 10px;
+  margin-right: 100px;
+}
+
+header h1 {
+  font-weight: 600;
+  color: hsl(21, 6%, 51%);
+  padding: 20px;
+  margin-top: 30px;
+  margin-left: 280px;
+  font-family: 'Rock Salt', cursive;
+}
+
 main { 
   display: flex;
   flex-direction: row;
