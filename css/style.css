@@ -21,11 +21,12 @@ nav ul {
   display: flex;
   flex-direction: column;
   height: 1200px;
-  border: solid black;
   justify-content: space-evenly;
   width: 100%;
   align-items: center;
   background-color: hsl(3, 86%, 64%);
+  border-radius: 20px;
+  margin: 5px;
 }
 body {
   border: solid black;
@@ -36,10 +37,11 @@ body {
 }
 
 header {
-  border: solid black;
+  margin: 5px;
   display: flex;
   background-color: hsl(23, 90%, 68%);
   justify-content: space-between;
+  border-radius: 20px;
 }
 
 header img {
@@ -97,10 +99,24 @@ hr {
 }
 
 footer {
-  border: solid black;
+  border-radius: 20px;
   display: flex;
   background-color: hsl(15, 87%, 66%);
+  justify-content: center;
+  margin: 5px;
+  position: sticky;
+  bottom: 20px;
+}
+
+footer ul {
+  display: flex;
   flex-direction: row;
+  justify-content: space-around
+}
+footer ul li {
+  margin: 80px;
+  font-family: 'Rock Salt', cursive;
+  color: hsl(23, 90%, 68%);
 }
 
 
@@ -122,6 +138,7 @@ button {
   color: hsl(31, 90%, 69%);
   font-weight: bold;
   font-size: 0.8em;
+  font-family: 'Rock Salt', cursive;
 }
 
 button:hover {
